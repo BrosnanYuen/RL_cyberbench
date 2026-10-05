@@ -1,0 +1,35 @@
+# Generated data (Stages 3-5)
+models/
+captures/
+logs/
+scans/
+qwen_dataset/
+muse_dataset/
+qwen_dataset_coraza/
+muse_dataset_coraza/
+qwen_sft_dataset/
+qwen_sft_dataset_coraza/
+qwen_rl_dataset/
+stage5_hf_dataset/
+sft_runs/
+rl_runs/
+attacker_train.json
+defender_train.json
+sft_report.json
+
+# Lab runtime
+llm_pentest_network/runtime/
+llm_pentest_network/captures/
+llm_pentest_network/datasets/
+
+# Vendored builds
+llama.cpp/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.venv/

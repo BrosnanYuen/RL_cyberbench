@@ -1,0 +1,690 @@
+{
+ "auth.login_ok": [
+  200,
+  {
+   "result": "success",
+   "token": "TEMP0123456789ABCDEFGHIJKLMNOPQRST"
+  }
+ ],
+ "core.version": [
+  200,
+  {
+   "version": "6.5.0-dev",
+   "ruby": "3.4.10 x86_64-linux 2026-06-30",
+   "api": "1.0"
+  }
+ ],
+ "module.search_slowloris": [
+  200,
+  [
+   {
+    "type": "auxiliary",
+    "name": "Slowloris Denial of Service Attack",
+    "fullname": "auxiliary/dos/http/slowloris",
+    "rank": "normal",
+    "disclosuredate": "2009-06-17"
+   }
+  ]
+ ],
+ "module.search_http_login": [
+  200,
+  [
+   {
+    "type": "auxiliary",
+    "name": "D-Link DIR-300A / DIR-320 / DIR-615D HTTP Login Utility",
+    "fullname": "auxiliary/scanner/http/dlink_dir_300_615_http_login",
+    "rank": "normal",
+    "disclosuredate": ""
+   },
+   {
+    "type": "auxiliary",
+    "name": "D-Link DIR-615H HTTP Login Utility",
+    "fullname": "auxiliary/scanner/http/dlink_dir_615h_http_login",
+    "rank": "normal",
+    "disclosuredate": ""
+   },
+   {
+    "type": "auxiliary",
+    "name": "D-Link DIR-300B / DIR-600B / DIR-815 / DIR-645 HTTP Login Utility",
+    "fullname": "auxiliary/scanner/http/dlink_dir_session_cgi_http_login",
+    "rank": "normal",
+    "disclosuredate": ""
+   },
+   {
+    "type": "auxiliary",
+    "name": "HTTP Login Utility",
+    "fullname": "auxiliary/scanner/http/http_login",
+    "rank": "normal",
+    "disclosuredate": ""
+   },
+   {
+    "type": "auxiliary",
+    "name": "VMware Web Login Scanner",
+    "fullname": "auxiliary/scanner/vmware/vmware_http_login",
+    "rank": "normal",
+    "disclosuredate": ""
+   }
+  ]
+ ],
+ "module.info_slowloris": [
+  200,
+  {
+   "type": "auxiliary",
+   "name": "Slowloris Denial of Service Attack",
+   "fullname": "auxiliary/dos/http/slowloris",
+   "rank": "normal",
+   "disclosuredate": "2009-06-17",
+   "description": "Slowloris tries to keep many connections to the target web server open and hold them open as long as possible. It accomplishes this by opening connections to the target web server and sending a partial request. Periodically, it will send subsequent HTTP headers, adding to-but never completing-the request. Affected servers will keep these connections open, filling their maximum concurrent connection pool, eventually denying additional connection attempts from clients.",
+   "license": "Metasploit Framework License (BSD)",
+   "filepath": "/opt/metasploit/modules/auxiliary/dos/http/slowloris.py",
+   "arch": [],
+   "platform": [],
+   "authors": [
+    "RSnake",
+    "Gokberk Yaltirakli",
+    "Daniel Teixeira",
+    "Matthew Kienow <matthew_kienow[AT]rapid7.com>"
+   ],
+   "privileged": false,
+   "check": false,
+   "default_options": {},
+   "notes": {},
+   "references": [
+    [
+     "CVE",
+     "2007-6750"
+    ],
+    [
+     "CVE",
+     "2010-2227"
+    ],
+    [
+     "EDB",
+     "8976"
+    ],
+    [
+     "URL",
+     "https://github.com/gkbrk/slowloris"
+    ]
+   ],
+   "actions": {},
+   "stance": "aggressive",
+   "options": {
+    "WORKSPACE": {
+     "type": "string",
+     "required": false,
+     "advanced": true,
+     "desc": "Specify the workspace for this module"
+    },
+    "VERBOSE": {
+     "type": "bool",
+     "required": false,
+     "advanced": true,
+     "desc": "Enable detailed status messages",
+     "default": false
+    },
+    "rhost": {
+     "type": "address",
+     "required": true,
+     "advanced": false,
+     "desc": "The target address"
+    },
+    "rport": {
+     "type": "port",
+     "required": true,
+     "advanced": false,
+     "desc": "The target port",
+     "default": 80
+    },
+    "sockets": {
+     "type": "integer",
+     "required": true,
+     "advanced": false,
+     "desc": "The number of sockets to use in the attack",
+     "default": 150
+    },
+    "delay": {
+     "type": "integer",
+     "required": true,
+     "advanced": false,
+     "desc": "The delay between sending keep-alive headers",
+     "default": 15
+    },
+    "ssl": {
+     "type": "bool",
+     "required": true,
+     "advanced": false,
+     "desc": "Negotiate SSL/TLS for outgoing connections",
+     "default": false
+    },
+    "rand_user_agent": {
+     "type": "bool",
+     "required": true,
+     "advanced": false,
+     "desc": "Randomizes user-agent with each request",
+     "default": true
+    }
+   }
+  }
+ ],
+ "module.options_slowloris": [
+  200,
+  {
+   "WORKSPACE": {
+    "type": "string",
+    "required": false,
+    "advanced": true,
+    "evasion": false,
+    "desc": "Specify the workspace for this module"
+   },
+   "VERBOSE": {
+    "type": "bool",
+    "required": false,
+    "advanced": true,
+    "evasion": false,
+    "desc": "Enable detailed status messages",
+    "default": false
+   },
+   "rhost": {
+    "type": "address",
+    "required": true,
+    "advanced": false,
+    "evasion": false,
+    "desc": "The target address"
+   },
+   "rport": {
+    "type": "port",
+    "required": true,
+    "advanced": false,
+    "evasion": false,
+    "desc": "The target port",
+    "default": 80
+   },
+   "sockets": {
+    "type": "integer",
+    "required": true,
+    "advanced": false,
+    "evasion": false,
+    "desc": "The number of sockets to use in the attack",
+    "default": 150
+   },
+   "delay": {
+    "type": "integer",
+    "required": true,
+    "advanced": false,
+    "evasion": false,
+    "desc": "The delay between sending keep-alive headers",
+    "default": 15
+   },
+   "ssl": {
+    "type": "bool",
+    "required": true,
+    "advanced": false,
+    "evasion": false,
+    "desc": "Negotiate SSL/TLS for outgoing connections",
+    "default": false
+   },
+   "rand_user_agent": {
+    "type": "bool",
+    "required": true,
+    "advanced": false,
+    "evasion": false,
+    "desc": "Randomizes user-agent with each request",
+    "default": true
+   }
+  }
+ ],
+ "module.info_handler": [
+  200,
+  {
+   "type": "exploit",
+   "name": "Generic Payload Handler",
+   "fullname": "exploit/multi/handler",
+   "rank": "manual",
+   "disclosuredate": "",
+   "description": "This module is a stub that provides all of the features of the Metasploit payload system to exploits that have been launched outside of the framework.",
+   "license": "Metasploit Framework License (BSD)",
+   "filepath": "/opt/metasploit/modules/exploits/multi/handler.rb",
+   "arch": [
+    "x86",
+    "x86_64",
+    "x64",
+    "mips",
+    "mipsle",
+    "mipsbe",
+    "mips64",
+    "mips64le",
+    "ppc",
+    "ppce500v2",
+    "ppc64",
+    "ppc64le",
+    "cbea",
+    "cbea64",
+    "sparc",
+    "sparc64",
+    "armle",
+    "armbe",
+    "aarch64",
+    "cmd",
+    "php",
+    "tty",
+    "java",
+    "ruby",
+    "dalvik",
+    "python",
+    "nodejs",
+    "firefox",
+    "zarch",
+    "r",
+    "riscv32be",
+    "riscv32le",
+    "riscv64be",
+    "riscv64le",
+    "loongarch64"
+   ],
+   "platform": [
+    "Android",
+    "Apple_iOS",
+    "BSD",
+    "Java",
+    "JavaScript",
+    "Linux",
+    "OSX",
+    "NodeJS",
+    "PHP",
+    "Python",
+    "Ruby",
+    "Solaris",
+    "Unix",
+    "Windows",
+    "Mainframe",
+    "Multi"
+   ],
+   "authors": [
+    "hdm <x@hdm.io>",
+    "bcook-r7"
+   ],
+   "privileged": false,
+   "check": false,
+   "default_options": {
+    "PAYLOAD": "generic/shell_reverse_tcp"
+   },
+   "notes": {
+    "Reliability": [
+     "unknown-reliability"
+    ],
+    "Stability": [
+     "unknown-stability"
+    ],
+    "SideEffects": [
+     "unknown-side-effects"
+    ]
+   },
+   "references": [],
+   "targets": {
+    "0": "Wildcard Target"
+   },
+   "default_target": 0,
+   "stance": "aggressive",
+   "options": {
+    "WORKSPACE": {
+     "type": "string",
+     "required": false,
+     "advanced": true,
+     "desc": "Specify the workspace for this module"
+    },
+    "VERBOSE": {
+     "type": "bool",
+     "required": false,
+     "advanced": true,
+     "desc": "Enable detailed status messages",
+     "default": false
+    },
+    "WfsDelay": {
+     "type": "integer",
+     "required": false,
+     "advanced": true,
+     "desc": "Additional delay in seconds to wait for a session",
+     "default": 2
+    },
+    "EnableContextEncoding": {
+     "type": "bool",
+     "required": false,
+     "advanced": true,
+     "desc": "Use transient context when encoding payloads",
+     "default": false
+    },
+    "ContextInformationFile": {
+     "type": "path",
+     "required": false,
+     "advanced": true,
+     "desc": "The information file that contains context information"
+    },
+    "DisablePayloadHandler": {
+     "type": "bool",
+     "required": false,
+     "advanced": true,
+     "desc": "Disable the handler code for the selected payload",
+     "default": false
+    },
+    "ExitOnSession": {
+     "type": "bool",
+     "required": true,
+     "advanced": true,
+     "desc": "Return from the exploit after a session has been created",
+     "default": true
+    },
+    "ListenerTimeout": {
+     "type": "integer",
+     "required": false,
+     "advanced": true,
+     "desc": "The maximum number of seconds to wait for new sessions",
+     "default": 0
+    }
+   }
+  }
+ ],
+ "module.check_unsupported": [
+  500,
+  {
+   "error": true,
+   "error_class": "Msf::RPC::Exception",
+   "error_string": "Msf::RPC::Exception",
+   "error_backtrace": [
+    "lib/msf/core/rpc/v10/rpc_base.rb:26:in 'Msf::RPC::RPC_Base#error'",
+    "lib/msf/core/rpc/v10/rpc_module.rb:531:in 'Msf::RPC::RPC_Module#rpc_check'",
+    "lib/msf/core/rpc/v10/service.rb:151:in 'block in Msf::RPC::Service#process'",
+    "lib/timeout.rb:185:in 'block in Timeout.timeout'",
+    "lib/timeout.rb:38:in 'Timeout::Error.handle_timeout'",
+    "lib/timeout.rb:194:in 'Timeout.timeout'",
+    "lib/msf/core/rpc/v10/service.rb:149:in 'Msf::RPC::Service#process'",
+    "lib/msf/core/rpc/v10/service.rb:81:in 'Msf::RPC::Service#on_request_uri'",
+    "lib/msf/core/rpc/v10/service.rb:62:in 'block in Msf::RPC::Service#start'",
+    "lib/rex/proto/http/handler/proc.rb:38:in 'Rex::Proto::Http::Handler::Proc#on_request'",
+    "lib/rex/proto/http/server.rb:336:in 'Rex::Proto::Http::Server#dispatch_request'",
+    "lib/rex/proto/http/server.rb:252:in 'Rex::Proto::Http::Server#on_client_data'",
+    "lib/rex/proto/http/server.rb:109:in 'block in Rex::Proto::Http::Server#start'",
+    "lib/rex/io/stream_server.rb:42:in 'Rex::IO::StreamServer#on_client_data'",
+    "lib/rex/io/stream_server.rb:185:in 'block in Rex::IO::StreamServer#monitor_clients'",
+    "lib/rex/io/stream_server.rb:184:in 'Array#each'",
+    "lib/rex/io/stream_server.rb:184:in 'Rex::IO::StreamServer#monitor_clients'",
+    "lib/rex/io/stream_server.rb:64:in 'block in Rex::IO::StreamServer#start'",
+    "lib/rex/thread_factory.rb:22:in 'block in Rex::ThreadFactory.spawn'",
+    "lib/msf/core/thread_manager.rb:105:in 'block in Msf::ThreadManager#spawn'"
+   ],
+   "error_message": "This module does not support check.",
+   "error_code": 500
+  }
+ ],
+ "session.list": [
+  200,
+  {}
+ ],
+ "job.list": [
+  200,
+  {}
+ ],
+ "db.hosts": [
+  500,
+  {
+   "error": true,
+   "error_class": "ArgumentError",
+   "error_string": "wrong number of arguments (given 0, expected 1)",
+   "error_backtrace": [
+    "lib/msf/core/rpc/v10/rpc_db.rb:403:in 'rpc_hosts'",
+    "lib/msf/core/rpc/v10/service.rb:151:in 'block in Msf::RPC::Service#process'",
+    "lib/timeout.rb:185:in 'block in Timeout.timeout'",
+    "lib/timeout.rb:38:in 'Timeout::Error.handle_timeout'",
+    "lib/timeout.rb:194:in 'Timeout.timeout'",
+    "lib/msf/core/rpc/v10/service.rb:149:in 'Msf::RPC::Service#process'",
+    "lib/msf/core/rpc/v10/service.rb:81:in 'Msf::RPC::Service#on_request_uri'",
+    "lib/msf/core/rpc/v10/service.rb:62:in 'block in Msf::RPC::Service#start'",
+    "lib/rex/proto/http/handler/proc.rb:38:in 'Rex::Proto::Http::Handler::Proc#on_request'",
+    "lib/rex/proto/http/server.rb:336:in 'Rex::Proto::Http::Server#dispatch_request'",
+    "lib/rex/proto/http/server.rb:252:in 'Rex::Proto::Http::Server#on_client_data'",
+    "lib/rex/proto/http/server.rb:109:in 'block in Rex::Proto::Http::Server#start'",
+    "lib/rex/io/stream_server.rb:42:in 'Rex::IO::StreamServer#on_client_data'",
+    "lib/rex/io/stream_server.rb:185:in 'block in Rex::IO::StreamServer#monitor_clients'",
+    "lib/rex/io/stream_server.rb:184:in 'Array#each'",
+    "lib/rex/io/stream_server.rb:184:in 'Rex::IO::StreamServer#monitor_clients'",
+    "lib/rex/io/stream_server.rb:64:in 'block in Rex::IO::StreamServer#start'",
+    "lib/rex/thread_factory.rb:22:in 'block in Rex::ThreadFactory.spawn'",
+    "lib/msf/core/thread_manager.rb:105:in 'block in Msf::ThreadManager#spawn'"
+   ],
+   "error_message": "wrong number of arguments (given 0, expected 1)"
+  }
+ ],
+ "db.services": [
+  500,
+  {
+   "error": true,
+   "error_class": "ArgumentError",
+   "error_string": "wrong number of arguments (given 0, expected 1)",
+   "error_backtrace": [
+    "lib/msf/core/rpc/v10/rpc_db.rb:492:in 'rpc_services'",
+    "lib/msf/core/rpc/v10/service.rb:151:in 'block in Msf::RPC::Service#process'",
+    "lib/timeout.rb:185:in 'block in Timeout.timeout'",
+    "lib/timeout.rb:38:in 'Timeout::Error.handle_timeout'",
+    "lib/timeout.rb:194:in 'Timeout.timeout'",
+    "lib/msf/core/rpc/v10/service.rb:149:in 'Msf::RPC::Service#process'",
+    "lib/msf/core/rpc/v10/service.rb:81:in 'Msf::RPC::Service#on_request_uri'",
+    "lib/msf/core/rpc/v10/service.rb:62:in 'block in Msf::RPC::Service#start'",
+    "lib/rex/proto/http/handler/proc.rb:38:in 'Rex::Proto::Http::Handler::Proc#on_request'",
+    "lib/rex/proto/http/server.rb:336:in 'Rex::Proto::Http::Server#dispatch_request'",
+    "lib/rex/proto/http/server.rb:252:in 'Rex::Proto::Http::Server#on_client_data'",
+    "lib/rex/proto/http/server.rb:109:in 'block in Rex::Proto::Http::Server#start'",
+    "lib/rex/io/stream_server.rb:42:in 'Rex::IO::StreamServer#on_client_data'",
+    "lib/rex/io/stream_server.rb:185:in 'block in Rex::IO::StreamServer#monitor_clients'",
+    "lib/rex/io/stream_server.rb:184:in 'Array#each'",
+    "lib/rex/io/stream_server.rb:184:in 'Rex::IO::StreamServer#monitor_clients'",
+    "lib/rex/io/stream_server.rb:64:in 'block in Rex::IO::StreamServer#start'",
+    "lib/rex/thread_factory.rb:22:in 'block in Rex::ThreadFactory.spawn'",
+    "lib/msf/core/thread_manager.rb:105:in 'block in Msf::ThreadManager#spawn'"
+   ],
+   "error_message": "wrong number of arguments (given 0, expected 1)"
+  }
+ ],
+ "db.vulns": [
+  500,
+  {
+   "error": true,
+   "error_class": "ArgumentError",
+   "error_string": "wrong number of arguments (given 0, expected 1)",
+   "error_backtrace": [
+    "lib/msf/core/rpc/v10/rpc_db.rb:541:in 'rpc_vulns'",
+    "lib/msf/core/rpc/v10/service.rb:151:in 'block in Msf::RPC::Service#process'",
+    "lib/timeout.rb:185:in 'block in Timeout.timeout'",
+    "lib/timeout.rb:38:in 'Timeout::Error.handle_timeout'",
+    "lib/timeout.rb:194:in 'Timeout.timeout'",
+    "lib/msf/core/rpc/v10/service.rb:149:in 'Msf::RPC::Service#process'",
+    "lib/msf/core/rpc/v10/service.rb:81:in 'Msf::RPC::Service#on_request_uri'",
+    "lib/msf/core/rpc/v10/service.rb:62:in 'block in Msf::RPC::Service#start'",
+    "lib/rex/proto/http/handler/proc.rb:38:in 'Rex::Proto::Http::Handler::Proc#on_request'",
+    "lib/rex/proto/http/server.rb:336:in 'Rex::Proto::Http::Server#dispatch_request'",
+    "lib/rex/proto/http/server.rb:252:in 'Rex::Proto::Http::Server#on_client_data'",
+    "lib/rex/proto/http/server.rb:109:in 'block in Rex::Proto::Http::Server#start'",
+    "lib/rex/io/stream_server.rb:42:in 'Rex::IO::StreamServer#on_client_data'",
+    "lib/rex/io/stream_server.rb:185:in 'block in Rex::IO::StreamServer#monitor_clients'",
+    "lib/rex/io/stream_server.rb:184:in 'Array#each'",
+    "lib/rex/io/stream_server.rb:184:in 'Rex::IO::StreamServer#monitor_clients'",
+    "lib/rex/io/stream_server.rb:64:in 'block in Rex::IO::StreamServer#start'",
+    "lib/rex/thread_factory.rb:22:in 'block in Rex::ThreadFactory.spawn'",
+    "lib/msf/core/thread_manager.rb:105:in 'block in Msf::ThreadManager#spawn'"
+   ],
+   "error_message": "wrong number of arguments (given 0, expected 1)"
+  }
+ ],
+ "db.notes": [
+  500,
+  {
+   "error": true,
+   "error_class": "ArgumentError",
+   "error_string": "wrong number of arguments (given 0, expected 1)",
+   "error_backtrace": [
+    "lib/msf/core/rpc/v10/rpc_db.rb:1164:in 'rpc_notes'",
+    "lib/msf/core/rpc/v10/service.rb:151:in 'block in Msf::RPC::Service#process'",
+    "lib/timeout.rb:185:in 'block in Timeout.timeout'",
+    "lib/timeout.rb:38:in 'Timeout::Error.handle_timeout'",
+    "lib/timeout.rb:194:in 'Timeout.timeout'",
+    "lib/msf/core/rpc/v10/service.rb:149:in 'Msf::RPC::Service#process'",
+    "lib/msf/core/rpc/v10/service.rb:81:in 'Msf::RPC::Service#on_request_uri'",
+    "lib/msf/core/rpc/v10/service.rb:62:in 'block in Msf::RPC::Service#start'",
+    "lib/rex/proto/http/handler/proc.rb:38:in 'Rex::Proto::Http::Handler::Proc#on_request'",
+    "lib/rex/proto/http/server.rb:336:in 'Rex::Proto::Http::Server#dispatch_request'",
+    "lib/rex/proto/http/server.rb:252:in 'Rex::Proto::Http::Server#on_client_data'",
+    "lib/rex/proto/http/server.rb:109:in 'block in Rex::Proto::Http::Server#start'",
+    "lib/rex/io/stream_server.rb:42:in 'Rex::IO::StreamServer#on_client_data'",
+    "lib/rex/io/stream_server.rb:185:in 'block in Rex::IO::StreamServer#monitor_clients'",
+    "lib/rex/io/stream_server.rb:184:in 'Array#each'",
+    "lib/rex/io/stream_server.rb:184:in 'Rex::IO::StreamServer#monitor_clients'",
+    "lib/rex/io/stream_server.rb:64:in 'block in Rex::IO::StreamServer#start'",
+    "lib/rex/thread_factory.rb:22:in 'block in Rex::ThreadFactory.spawn'",
+    "lib/msf/core/thread_manager.rb:105:in 'block in Msf::ThreadManager#spawn'"
+   ],
+   "error_message": "wrong number of arguments (given 0, expected 1)"
+  }
+ ],
+ "console.create": [
+  200,
+  {
+   "id": "0",
+   "prompt": "",
+   "busy": false
+  }
+ ],
+ "console.write_version": [
+  200,
+  {
+   "wrote": 8
+  }
+ ],
+ "console.read_after": [
+  200,
+  {
+   "data": "\n         .                                         .\n .\n\n      dBBBBBBb  dBBBP dBBBBBBP dBBBBBb  .                       o\n       '   dB'                     BBP\n    dB'dB'dB' dBBP     dBP     dBP BB\n   dB'dB'dB' dBP      dBP     dBP  BB\n  dB'dB'dB' dBBBBP   dBP     dBBBBBBB\n\n                                   dBBBBBP  dBBBBBb  dBP    dBBBBP dBP dBBBBBBP\n          .                  .                  dB' dBP    dB'.BP\n                             |       dBP    dBBBB' dBP    dB'.BP dBP    dBP\n                           --o--    dBP    dBP    dBP    dB'.BP dBP    dBP\n                             |     dBBBBP dBP    dBBBBP dBBBBP dBP    dBP\n\n                                                                    .\n                .\n        o                  To boldly go where no\n                            shell has gone before\n\n\n       =[ metasploit v6.5.0-dev                                 ]\n+ -- --=[ 2,672 exploits - 1,343 auxiliary - 2,598 payloads     ]\n+ -- --=[ 435 post - 57 encoders - 14 nops - 12 evasion         ]\n\nMetasploit Documentation: https://docs.metasploit.com/\nThe Metasploit Framework is a Rapid7 Open Source Project\n\nFramework: 6.5.0-dev\nConsole  : 6.5.0-dev\n",
+   "prompt": "msf > ",
+   "busy": false
+  }
+ ],
+ "console.destroy": [
+  200,
+  {
+   "result": "success"
+  }
+ ],
+ "auth.login_badpw": [
+  401,
+  {
+   "error": true,
+   "error_class": "Msf::RPC::Exception",
+   "error_string": "Msf::RPC::Exception",
+   "error_backtrace": [
+    "lib/msf/core/rpc/v10/rpc_base.rb:26:in 'Msf::RPC::RPC_Base#error'",
+    "lib/msf/core/rpc/v10/rpc_auth.rb:50:in 'Msf::RPC::RPC_Auth#rpc_login_noauth'",
+    "lib/msf/core/rpc/v10/service.rb:151:in 'block in Msf::RPC::Service#process'",
+    "lib/timeout.rb:185:in 'block in Timeout.timeout'",
+    "lib/timeout.rb:38:in 'Timeout::Error.handle_timeout'",
+    "lib/timeout.rb:194:in 'Timeout.timeout'",
+    "lib/msf/core/rpc/v10/service.rb:149:in 'Msf::RPC::Service#process'",
+    "lib/msf/core/rpc/v10/service.rb:81:in 'Msf::RPC::Service#on_request_uri'",
+    "lib/msf/core/rpc/v10/service.rb:62:in 'block in Msf::RPC::Service#start'",
+    "lib/rex/proto/http/handler/proc.rb:38:in 'Rex::Proto::Http::Handler::Proc#on_request'",
+    "lib/rex/proto/http/server.rb:336:in 'Rex::Proto::Http::Server#dispatch_request'",
+    "lib/rex/proto/http/server.rb:252:in 'Rex::Proto::Http::Server#on_client_data'",
+    "lib/rex/proto/http/server.rb:109:in 'block in Rex::Proto::Http::Server#start'",
+    "lib/rex/io/stream_server.rb:42:in 'Rex::IO::StreamServer#on_client_data'",
+    "lib/rex/io/stream_server.rb:185:in 'block in Rex::IO::StreamServer#monitor_clients'",
+    "lib/rex/io/stream_server.rb:184:in 'Array#each'",
+    "lib/rex/io/stream_server.rb:184:in 'Rex::IO::StreamServer#monitor_clients'",
+    "lib/rex/io/stream_server.rb:64:in 'block in Rex::IO::StreamServer#start'",
+    "lib/rex/thread_factory.rb:22:in 'block in Rex::ThreadFactory.spawn'",
+    "lib/msf/core/thread_manager.rb:105:in 'block in Msf::ThreadManager#spawn'"
+   ],
+   "error_message": "Login Failed",
+   "error_code": 401
+  }
+ ],
+ "auth.login_baduser": [
+  401,
+  {
+   "error": true,
+   "error_class": "Msf::RPC::Exception",
+   "error_string": "Msf::RPC::Exception",
+   "error_backtrace": [
+    "lib/msf/core/rpc/v10/rpc_base.rb:26:in 'Msf::RPC::RPC_Base#error'",
+    "lib/msf/core/rpc/v10/rpc_auth.rb:50:in 'Msf::RPC::RPC_Auth#rpc_login_noauth'",
+    "lib/msf/core/rpc/v10/service.rb:151:in 'block in Msf::RPC::Service#process'",
+    "lib/timeout.rb:185:in 'block in Timeout.timeout'",
+    "lib/timeout.rb:38:in 'Timeout::Error.handle_timeout'",
+    "lib/timeout.rb:194:in 'Timeout.timeout'",
+    "lib/msf/core/rpc/v10/service.rb:149:in 'Msf::RPC::Service#process'",
+    "lib/msf/core/rpc/v10/service.rb:81:in 'Msf::RPC::Service#on_request_uri'",
+    "lib/msf/core/rpc/v10/service.rb:62:in 'block in Msf::RPC::Service#start'",
+    "lib/rex/proto/http/handler/proc.rb:38:in 'Rex::Proto::Http::Handler::Proc#on_request'",
+    "lib/rex/proto/http/server.rb:336:in 'Rex::Proto::Http::Server#dispatch_request'",
+    "lib/rex/proto/http/server.rb:252:in 'Rex::Proto::Http::Server#on_client_data'",
+    "lib/rex/proto/http/server.rb:109:in 'block in Rex::Proto::Http::Server#start'",
+    "lib/rex/io/stream_server.rb:42:in 'Rex::IO::StreamServer#on_client_data'",
+    "lib/rex/io/stream_server.rb:185:in 'block in Rex::IO::StreamServer#monitor_clients'",
+    "lib/rex/io/stream_server.rb:184:in 'Array#each'",
+    "lib/rex/io/stream_server.rb:184:in 'Rex::IO::StreamServer#monitor_clients'",
+    "lib/rex/io/stream_server.rb:64:in 'block in Rex::IO::StreamServer#start'",
+    "lib/rex/thread_factory.rb:22:in 'block in Rex::ThreadFactory.spawn'",
+    "lib/msf/core/thread_manager.rb:105:in 'block in Msf::ThreadManager#spawn'"
+   ],
+   "error_message": "Login Failed",
+   "error_code": 401
+  }
+ ],
+ "bad_token_core": [
+  401,
+  {
+   "error": true,
+   "error_class": "Msf::RPC::Exception",
+   "error_string": "Msf::RPC::Exception",
+   "error_backtrace": [
+    "lib/msf/core/rpc/v10/service.rb:145:in 'Msf::RPC::Service#process'",
+    "lib/msf/core/rpc/v10/service.rb:81:in 'Msf::RPC::Service#on_request_uri'",
+    "lib/msf/core/rpc/v10/service.rb:62:in 'block in Msf::RPC::Service#start'",
+    "lib/rex/proto/http/handler/proc.rb:38:in 'Rex::Proto::Http::Handler::Proc#on_request'",
+    "lib/rex/proto/http/server.rb:336:in 'Rex::Proto::Http::Server#dispatch_request'",
+    "lib/rex/proto/http/server.rb:252:in 'Rex::Proto::Http::Server#on_client_data'",
+    "lib/rex/proto/http/server.rb:109:in 'block in Rex::Proto::Http::Server#start'",
+    "lib/rex/io/stream_server.rb:42:in 'Rex::IO::StreamServer#on_client_data'",
+    "lib/rex/io/stream_server.rb:185:in 'block in Rex::IO::StreamServer#monitor_clients'",
+    "lib/rex/io/stream_server.rb:184:in 'Array#each'",
+    "lib/rex/io/stream_server.rb:184:in 'Rex::IO::StreamServer#monitor_clients'",
+    "lib/rex/io/stream_server.rb:64:in 'block in Rex::IO::StreamServer#start'",
+    "lib/rex/thread_factory.rb:22:in 'block in Rex::ThreadFactory.spawn'",
+    "lib/msf/core/thread_manager.rb:105:in 'block in Msf::ThreadManager#spawn'"
+   ],
+   "error_message": "Invalid Authentication Token",
+   "error_code": 401
+  }
+ ],
+ "unknown_method": [
+  500,
+  {
+   "error": true,
+   "error_class": "ArgumentError",
+   "error_string": "Unknown API Call: '\"rpc_bogus_method\"'",
+   "error_backtrace": [
+    "lib/msf/core/rpc/v10/service.rb:139:in 'Msf::RPC::Service#process'",
+    "lib/msf/core/rpc/v10/service.rb:81:in 'Msf::RPC::Service#on_request_uri'",
+    "lib/msf/core/rpc/v10/service.rb:62:in 'block in Msf::RPC::Service#start'",
+    "lib/rex/proto/http/handler/proc.rb:38:in 'Rex::Proto::Http::Handler::Proc#on_request'",
+    "lib/rex/proto/http/server.rb:336:in 'Rex::Proto::Http::Server#dispatch_request'",
+    "lib/rex/proto/http/server.rb:252:in 'Rex::Proto::Http::Server#on_client_data'",
+    "lib/rex/proto/http/server.rb:109:in 'block in Rex::Proto::Http::Server#start'",
+    "lib/rex/io/stream_server.rb:42:in 'Rex::IO::StreamServer#on_client_data'",
+    "lib/rex/io/stream_server.rb:185:in 'block in Rex::IO::StreamServer#monitor_clients'",
+    "lib/rex/io/stream_server.rb:184:in 'Array#each'",
+    "lib/rex/io/stream_server.rb:184:in 'Rex::IO::StreamServer#monitor_clients'",
+    "lib/rex/io/stream_server.rb:64:in 'block in Rex::IO::StreamServer#start'",
+    "lib/rex/thread_factory.rb:22:in 'block in Rex::ThreadFactory.spawn'",
+    "lib/msf/core/thread_manager.rb:105:in 'block in Msf::ThreadManager#spawn'"
+   ],
+   "error_message": "Unknown API Call: '\"rpc_bogus_method\"'"
+  }
+ ]
+}

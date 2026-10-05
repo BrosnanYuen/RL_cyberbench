@@ -1,0 +1,77 @@
+{
+  "@version": "2.17.0",
+  "@generated": "2026-09-13T10:00:00Z",
+  "site": [
+    {
+      "@name": "http://192.161.7.1:8080",
+      "alerts": [
+        {
+          "alert": "SQL Injection",
+          "name": "SQL Injection",
+          "risk": "High",
+          "confidence": "Medium",
+          "description": "SQL injection may be possible. The UNION keyword was detected in the response.",
+          "solution": "Do not construct SQL queries with string concatenation; use parameterized queries or an ORM.",
+          "reference": "https://owasp.org/www-community/attacks/SQL_Injection",
+          "cweId": 89,
+          "wascId": 19,
+          "urls": [
+            "http://192.161.7.1:8080/?q=1%27%20OR%201=1"
+          ],
+          "instances": [
+            {
+              "uri": "http://192.161.7.1:8080/?q=1%27%20OR%201=1",
+              "method": "GET",
+              "param": "q",
+              "attack": "1' OR 1=1",
+              "evidence": "UNION"
+            }
+          ]
+        },
+        {
+          "alert": "Application Error Disclosure",
+          "name": "Application Error Disclosure",
+          "risk": "Medium",
+          "confidence": "Medium",
+          "description": "The application disclosed an internal error page that may leak implementation details.",
+          "solution": "Return generic error pages and log details server-side only.",
+          "cweId": 209,
+          "wascId": 13,
+          "urls": [
+            "http://192.161.7.1:8080/?q=%25"
+          ],
+          "instances": [
+            {
+              "uri": "http://192.161.7.1:8080/?q=%25",
+              "method": "GET",
+              "param": "q",
+              "attack": "%",
+              "evidence": "Internal Server Error"
+            }
+          ]
+        },
+        {
+          "alert": "Server Header Information Disclosure",
+          "name": "Server Header Information Disclosure",
+          "risk": "Low",
+          "confidence": "High",
+          "description": "The Server response header discloses the server software and version.",
+          "solution": "Remove or mask the Server header.",
+          "cweId": 200,
+          "wascId": 13,
+          "urls": [
+            "http://192.161.7.1:8080/"
+          ],
+          "instances": [
+            {
+              "uri": "http://192.161.7.1:8080/",
+              "method": "GET",
+              "param": "",
+              "evidence": "Server: nginx/1.25.3"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

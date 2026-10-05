@@ -1,0 +1,27 @@
+[project]
+name = "zap-skill"
+version = "0.1.0"
+description = "OWASP ZAP DAST skill for pi agents (SKILL.md + wrappers + alerts->md parser)"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.pytest.ini_options]
+markers = [
+    "integration: tests that require docker and/or live networks (run via make integration)",
+]
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "B", "A", "C4", "SIM", "RET", "ARG", "PTH", "RUF"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.11"
+# lenient per repo conventions
+ignore_missing_imports = true
+disallow_untyped_defs = false
+check_untyped_defs = true

@@ -1,0 +1,43 @@
+[project]
+name = "pcap-to-md-mcp-server"
+version = "0.1.0"
+description = "pcap/tcpdump -> Markdown converters + MCP server (pcap2md)"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "mcp>=2.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "pytest-asyncio>=0.23", "ruff", "mypy"]
+
+[project.scripts]
+pcap2md = "pcap_to_md.cli:main"
+pcap2md-server = "pcap_to_md.server:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["pcap_to_md"]
+
+[tool.pytest.ini_options]
+markers = [
+    "requires_tshark: tests that need tshark installed (skipped otherwise)",
+]
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "B", "A", "C4", "SIM", "RET", "ARG", "PTH", "RUF"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.11"
+# lenient per repo conventions
+ignore_missing_imports = true
+disallow_untyped_defs = false
+check_untyped_defs = true
